@@ -1,15 +1,16 @@
-import { createContext } from "react";
+import { createContext, useState, useContext } from "react";
 
 export const getStartedPageLang = {
   english: {
-    signInBtn: "Sing In",
+    link: "/nl-en",
+    signInBtn: "Sign In",
     header: {
       H1: "Unlimited movies, TV shows, and more.",
       H2: "Watch anywhere. Cancel anytime.",
       form: {
         Title:
           "Ready to watch? Enter your email to create or restart your membership.",
-        inputPlaceholder: "Email address",
+        inputLabel: "Email address",
         btnTitle: "Get Started",
       },
     },
@@ -97,8 +98,30 @@ export const getStartedPageLang = {
       ],
     },
   },
+  nederlands: {
+    link: "/nl",
+    signInBtn: "Iniciar Sesión",
+    header: {
+      H1: "sjdfjsifj",
+      H2: "sdgsdg.",
+      form: {
+        Title:
+          "Ready to watch? Enter your email to create or restart your membership.",
+        inputLabel: "Email address",
+        btnTitle: "Get Started",
+      },
+    },
+  },
 };
 
-const getStartedLangContext = createContext(getStartedPageLang);
+export const GSLangContext = createContext(getStartedPageLang.english);
 
-export default getStartedLangContext;
+const GSLangContProv = ({ children, provValue }: any) => {
+  return (
+    <GSLangContext.Provider value={provValue}>
+      {children}
+    </GSLangContext.Provider>
+  );
+};
+
+export default GSLangContProv;

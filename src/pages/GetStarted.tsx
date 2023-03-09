@@ -1,12 +1,12 @@
 import React from "react";
-import NetflixLogo from "../components/NetflixLogo";
+import Header from "../components/GetStarted/Header";
+import Navbar from "../components/GetStarted/Navbar";
 
-const GetStarted = () => {
+const GetStarted = ({ lang, setLang }: any) => {
   return (
     <div>
-      <nav>
-        <NetflixLogo />
-      </nav>
+      <Navbar lang={lang} setLang={setLang} />
+      <Header />
     </div>
   );
 };

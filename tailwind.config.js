@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        NetflixRed: "#E50914",
+      },
+      height: { 737: "737px" },
+      fontFamily: {
+        netflixSans: "'Netflix Sans', 'serif'",
+      },
+    },
   },
   plugins: [],
 };
