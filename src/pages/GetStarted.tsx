@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/GetStarted/Header";
+import Main from "../components/GetStarted/main/Main";
 import Navbar from "../components/GetStarted/Navbar";
 
 const GetStarted = ({ lang, setLang }: any) => {
@@ -7,6 +8,7 @@ const GetStarted = ({ lang, setLang }: any) => {
     <div>
       <Navbar lang={lang} setLang={setLang} />
       <Header />
+      <Main />
     </div>
   );
 };

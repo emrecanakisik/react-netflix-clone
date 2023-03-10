@@ -1,7 +1,7 @@
 import React from "react";
 import NetflixLogo from "../NetflixLogo";
-import SelectLang from "./SelectLang";
-import SingInBtn from "./SingInBtn";
+import SelectLang from "./header/SelectLang";
+import SingInBtn from "../GetStarted/header/SingInBtn";
 
 const Navbar = ({ lang, setLang }: any) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GSLangContext } from "../../contexts/GetStartedLangContext";
+import { GSLangContext } from "../../../contexts/GetStartedLangContext";
 
 const SingInBtn = () => {
   const signInBtn = useContext(GSLangContext).signInBtn;

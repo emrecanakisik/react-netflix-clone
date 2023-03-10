@@ -22,6 +22,7 @@ export const getStartedPageLang = {
       s2: {
         H1: "Download your shows to watch offline.",
         H2: "Save your favorites easily and always have something to watch.",
+        miniBox: { H1: "Stranger Things", H2: "Downloading..." },
       },
       s3: {
         H1: "Watch everywhere.",
@@ -119,6 +120,7 @@ export const getStartedPageLang = {
       s2: {
         H1: "Download series die je offline wilt kijken.",
         H2: "Sla je favorieten eenvoudig op zodat je altijd wat kunt kijken.",
+        miniBox: { H1: "Stranger Things", H2: "Downloaden..." },
       },
       s3: {
         H1: "Kijk overal.",

@@ -7,7 +7,7 @@ const EmailForm = () => {
   return (
     <form>
       <h3 className="text-[1.2rem] pb-5 ">{form.Title}</h3>
-      <div className="flex justify-center h-[4.375rem] rounded-sm overflow-hidden w-[95%]">
+      <div className="flex justify-center h-[4.375rem] rounded-sm overflow-hidden w-[95%] mx-auto">
         <div className="group focus-within:border-blue-600 input-box relative w-8/12 text-black px-[0.675rem] pt-[0.675rem] bg-white border border-gray-600 focus:border-blue-500">
           <input
             type="email"
@@ -24,7 +24,7 @@ const EmailForm = () => {
         </div>
         <button className="bg-NetflixRed text-3xl flex-1 flex justify-between items-center w-full px-[1.875rem]">
           {form.btnTitle}
-          <svg viewBox="0 0 6 12" width={11} className="ml-4 fill-white">
+          <svg viewBox="0 0 6 12" width={11} className="ml-2 fill-white">
             <path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z"></path>
           </svg>
         </button>

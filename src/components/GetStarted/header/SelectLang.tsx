@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getStartedPageLang } from "../../contexts/GetStartedLangContext";
+import { getStartedPageLang } from "../../../contexts/GetStartedLangContext";
 import { useNavigate } from "react-router-dom";
 
 const SelectLang = ({ lang, setLang }: any) => {
