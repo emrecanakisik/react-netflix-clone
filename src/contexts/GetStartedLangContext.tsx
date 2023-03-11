@@ -138,7 +138,7 @@ export const getStartedPageLang = {
           ques: "Wat kan ik kijken op Netflix?",
           ans: {
             p1: "Netflix heeft een uitgebreide catalogus van speelfilms, documentaires, series, anime, bekroonde Netflix Originals en meer. Kijk zoveel je wilt en wanneer je wilt.",
-            a: "Bekijk enkele titels.",
+            link: "Bekijk enkele titels.",
           },
         },
         {

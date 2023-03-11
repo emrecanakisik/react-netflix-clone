@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "../components/GetStarted/Header";
+import Header from "../components/GetStarted/header/Header";
 import Main from "../components/GetStarted/main/Main";
-import Navbar from "../components/GetStarted/Navbar";
+import Navbar from "../components/GetStarted/header/Navbar";
+import FAQ from "../components/GetStarted/FAQ/FAQ";
 
 const GetStarted = ({ lang, setLang }: any) => {
   return (
@@ -9,6 +10,7 @@ const GetStarted = ({ lang, setLang }: any) => {
       <Navbar lang={lang} setLang={setLang} />
       <Header />
       <Main />
+      <FAQ />
     </div>
   );
 };

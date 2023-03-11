@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GSLangContext } from "../../contexts/GetStartedLangContext";
 
 const EmailForm = () => {
   const form = useContext(GSLangContext).header.form;
-
+  const mailBoxControl = (e: any) => {
+    const mailBox = document.querySelector(".GSHEmailbox") as HTMLInputElement;
+    console.log(mailBox?.value);
+    mailBox?.value === "" ? mailBox.focus() : console.log(mailBox?.value);
+    e.preventDefault();
+  };
   return (
     <form>
       <h3 className="text-[1.2rem] pb-5 ">{form.Title}</h3>
@@ -13,7 +18,7 @@ const EmailForm = () => {
             type="email"
             name=""
             id="gsEmailBox"
-            className="w-full h-full focus:outline-none peer"
+            className="GSHEmailbox w-full h-full focus:outline-none peer"
           />
           <label
             htmlFor="gsEmailBox"
@@ -22,7 +27,10 @@ const EmailForm = () => {
             {form.inputLabel}
           </label>
         </div>
-        <button className="bg-NetflixRed text-3xl flex-1 flex justify-between items-center w-full px-[1.875rem]">
+        <button
+          onClick={mailBoxControl}
+          className="bg-NetflixRed text-3xl flex-1 flex justify-between items-center w-full px-[1.875rem]"
+        >
           {form.btnTitle}
           <svg viewBox="0 0 6 12" width={11} className="ml-2 fill-white">
             <path d="M.61 1.312l.78-.624L5.64 6l-4.25 5.312-.78-.624L4.36 6z"></path>

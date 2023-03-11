@@ -50,7 +50,7 @@ const MainItem: FC<img_video> = ({
             <img src={img2src} alt="" className={"h-20"} />
             <div className="flex-1 flex flex-col ml-4">
               <h1 className="font-medium text-white">{miniBoxH1}</h1>
-              <h2 className="text-sm text-blue-700">{miniBoxH2}</h2>
+              <h2 className="text-sm text-blue-600">{miniBoxH2}</h2>
             </div>
             <img src={img3src} alt="" className={"w-12"} />
           </div>
