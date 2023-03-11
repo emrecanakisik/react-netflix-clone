@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { getStartedPageLang } from "../../../contexts/GetStartedLangContext";
 import { useNavigate } from "react-router-dom";
 
 const SelectLang = ({ lang, setLang }: any) => {
   const className = "bg-gray-500 text-white";
-
+  console.log(lang);
   const navigate = useNavigate();
 
   const switchLang = (selectedLang: string) => {
@@ -18,7 +18,7 @@ const SelectLang = ({ lang, setLang }: any) => {
   };
 
   return (
-    <div className="relative langSelect border inline-flex justify-between items-center mr-8 rounded">
+    <div className="relative langSelect border inline-flex max-w-[8rem] justify-between items-center mr-8 rounded">
       <select
         name=""
         id="langSel"

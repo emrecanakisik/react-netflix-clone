@@ -8,8 +8,8 @@ type FaqItem = {
 
 const FAQItem: FC<FaqItem> = ({ ques, ans1, ans2, ansA }) => {
   return (
-    <details className="mt-1 rounded w-3/6 bg-[#2D2D2D] text-white cursor-pointer group">
-      <summary className="list-none p-4 flex justify-between items-center font-medium text-lg">
+    <details className="mt-2 rounded w-7/12 bg-[#2D2D2D] text-white cursor-pointer group">
+      <summary className="list-none py-5 px-7 flex justify-between items-center text-[1.625rem]">
         {ques}
         <svg
           viewBox="0 0 20 20"
@@ -21,7 +21,7 @@ const FAQItem: FC<FaqItem> = ({ ques, ans1, ans2, ansA }) => {
           </g>
         </svg>
       </summary>
-      <p className="px-4 pb-4">
+      <p className="px-7 pb-4 text-[1.625rem]">
         {ans1}
         {ans2 && <div className="mt-5">{ans2}</div>}
       </p>
