@@ -19,7 +19,7 @@ const Header = () => {
         {/* mt-64 */}
         <h1 className="text-[64px] font-medium leading-[70px]">{header.H1}</h1>
         <h2 className="text-[26px] py-4">{header.H2}</h2>
-        <EmailForm />
+        <EmailForm emailBoxId={1} />
       </div>
     </header>
   );

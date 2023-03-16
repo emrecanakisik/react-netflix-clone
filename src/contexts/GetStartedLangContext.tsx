@@ -1,7 +1,8 @@
-import { createContext, useState, useContext } from "react";
+import { createContext } from "react";
 
 export const getStartedPageLang = {
   english: {
+    Lang: "English",
     link: "/nl-en",
     signInBtn: "Sign In",
     header: {
@@ -100,6 +101,7 @@ export const getStartedPageLang = {
     },
   },
   nederlands: {
+    Lang: "Nederland",
     link: "/nl",
     signInBtn: "Inloggen",
     header: {

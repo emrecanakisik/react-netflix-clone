@@ -21,10 +21,10 @@ const FAQItem: FC<FaqItem> = ({ ques, ans1, ans2, ansA }) => {
           </g>
         </svg>
       </summary>
-      <p className="px-7 pb-4 text-[1.625rem]">
+      <div className="px-7 pb-4 text-[1.625rem]">
         {ans1}
         {ans2 && <div className="mt-5">{ans2}</div>}
-      </p>
+      </div>
     </details>
   );
 };

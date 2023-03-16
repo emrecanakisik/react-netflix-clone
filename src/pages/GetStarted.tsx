@@ -4,16 +4,17 @@ import Main from "../components/GetStarted/main/Main";
 import Navbar from "../components/GetStarted/header/Navbar";
 import FAQ from "../components/GetStarted/FAQ/FAQ";
 import Footer from "../components/GetStarted/footer/Footer";
+import GSLangContProv from "../contexts/GetStartedLangContext";
 
-const GetStarted = ({ lang, setLang }: any) => {
+const GetStarted = ({ isLang, setIsLang, setLang, lang }: any) => {
   return (
-    <div>
-      <Navbar lang={lang} setLang={setLang} />
+    <GSLangContProv provValue={lang}>
+      <Navbar isLang={isLang} setIsLang={setIsLang} setLang={setLang} />
       <Header />
       <Main />
       <FAQ />
-      <Footer lang={lang} setLang={setLang} />
-    </div>
+      <Footer isLang={isLang} setIsLang={setIsLang} setLang={setLang} />
+    </GSLangContProv>
   );
 };
 

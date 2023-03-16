@@ -1,29 +1,50 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import GetStarted from "./pages/GetStarted";
+import Login from "./pages/Login";
 import { Routes, Route, Link, NavLink, useNavigate } from "react-router-dom";
 import GSLangContProv, {
   getStartedPageLang,
 } from "./contexts/GetStartedLangContext";
+import { loginPageLang } from "./contexts/LoginLangContext";
 
 function App() {
-  const [lang, setLang] = useState(getStartedPageLang.english);
-  console.log(lang.signInBtn);
+  const [isLang, setIsLang] = useState("English");
+  const [GSLang, setGSLang] = useState(getStartedPageLang.english);
+  const [LoginLang, setLoginLang] = useState(loginPageLang.english);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /*  useEffect(() => {
     navigate("/nl-en");
-  }, []);
+  }, []); */
 
   return (
-    <GSLangContProv provValue={lang}>
+    <div>
       <Routes>
         <Route
-          path={lang.link}
-          element={<GetStarted lang={lang} setLang={setLang} />}
+          path={GSLang.link}
+          element={
+            <GetStarted
+              isLang={isLang}
+              setIsLang={setIsLang}
+              lang={GSLang}
+              setLang={setGSLang}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login
+              isLang={isLang}
+              setIsLang={setIsLang}
+              lang={LoginLang}
+              setLang={setLoginLang}
+            />
+          }
         />
       </Routes>
-    </GSLangContProv>
+    </div>
   );
 }
 
