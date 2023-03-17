@@ -8,7 +8,7 @@ type FaqItem = {
 
 const FAQItem: FC<FaqItem> = ({ ques, ans1, ans2, ansA }) => {
   return (
-    <details className="mt-2 rounded w-7/12 bg-[#2D2D2D] text-white cursor-pointer group">
+    <details className="mt-2 rounded w-7/12 bg-accordionBgGray text-white cursor-pointer group">
       <summary className="list-none py-5 px-7 flex justify-between items-center text-[1.625rem]">
         {ques}
         <svg

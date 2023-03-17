@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { GSLangContext } from "../../../contexts/GetStartedLangContext";
-import SelectLang from "../header/SelectLang";
+import SelectLang from "../SelectLang";
 import FooterItem from "./FooterItem";
 
 const Footer = ({ isLang, setIsLang, setLang }: any) => {
   const footer = useContext(GSLangContext).footer;
   return (
-    <footer className="px-[31.9697rem] py-10 flex flex-col text-[#737373] bg-black">
+    <footer className="px-[31.9697rem] py-10 flex flex-col text-NetflixMidGray bg-black">
       <div className="mb-7">
         {footer.phoneNumForQues.title}
         <a href="#" className="hover:underline">

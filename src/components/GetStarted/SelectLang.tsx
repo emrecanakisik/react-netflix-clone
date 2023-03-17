@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { getStartedPageLang } from "../../../contexts/GetStartedLangContext";
+import { getStartedPageLang } from "../../contexts/GetStartedLangContext";
 import { useNavigate } from "react-router-dom";
 
 type lang = {

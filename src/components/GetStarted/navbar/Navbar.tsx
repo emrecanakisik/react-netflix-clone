@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import NetflixLogo from "../../NetflixLogo";
-import SelectLang from "./SelectLang";
+import SelectLang from "../SelectLang";
 import SingInBtn from "./SingInBtn";
 type lang = { setLang: string; isLang: string; setIsLang: string };
 
