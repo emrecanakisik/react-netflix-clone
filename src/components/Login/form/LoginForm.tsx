@@ -6,7 +6,7 @@ import SignInBtn from "./SignInBtn";
 const LoginForm = () => {
   const form = useContext(LoginLangContext).form;
   return (
-    <div className="bg-black rounded text-white w-[28rem] h-[42.5rem] px-[4.25rem] py-[3.75rem] mx-auto">
+    <div className="bg-black rounded text-white w-[28rem] h-[42.5rem] px-[4.25rem] py-[3.75rem] mx-auto mb-[4.25rem]">
       <h1 className="text-[2rem] mb-7 font-medium">{form.H1}</h1>
       <LoginInput
         inputType="email"

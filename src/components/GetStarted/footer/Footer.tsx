@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
 import { GSLangContext } from "../../../contexts/GetStartedLangContext";
+import FooterItem from "../../FooterItem";
+import PhoneNumForQues from "../../PhoneNumForQues";
 import SelectLang from "../SelectLang";
-import FooterItem from "./FooterItem";
 
 const Footer = ({ isLang, setIsLang, setLang }: any) => {
   const footer = useContext(GSLangContext).footer;
   return (
     <footer className="px-[31.9697rem] py-10 flex flex-col text-NetflixMidGray bg-black">
-      <div className="mb-7">
-        {footer.phoneNumForQues.title}
-        <a href="#" className="hover:underline">
-          {footer.phoneNumForQues.number}
-        </a>
-      </div>
+      <PhoneNumForQues
+        text={footer.phoneNumForQues.title}
+        phoneNum={footer.phoneNumForQues.number}
+      />
       <ul className="footer-items flex flex-wrap">
         {footer.items.map((item, index) => (
           <FooterItem title={item} key={index} />
