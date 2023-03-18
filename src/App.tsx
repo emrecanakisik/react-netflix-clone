@@ -27,8 +27,10 @@ function App() {
             <GetStarted
               isLang={isLang}
               setIsLang={setIsLang}
-              lang={GSLang}
-              setLang={setGSLang}
+              GSLang={GSLang}
+              setGSLang={setGSLang}
+              loginLang={LoginLang}
+              setLoginLang={setLoginLang}
             />
           }
         />
@@ -38,8 +40,10 @@ function App() {
             <Login
               isLang={isLang}
               setIsLang={setIsLang}
-              lang={LoginLang}
-              setLang={setLoginLang}
+              GSLang={GSLang}
+              setGSLang={setGSLang}
+              loginLang={LoginLang}
+              setLoginLang={setLoginLang}
             />
           }
         />

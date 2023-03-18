@@ -5,6 +5,7 @@ import SignInBtn from "./SignInBtn";
 
 const LoginForm = () => {
   const form = useContext(LoginLangContext).form;
+  console.log(form.H1);
   return (
     <div className="bg-black rounded text-white w-[28rem] h-[42.5rem] px-[4.25rem] py-[3.75rem] mx-auto mb-[4.25rem]">
       <h1 className="text-[2rem] mb-7 font-medium">{form.H1}</h1>
@@ -24,7 +25,7 @@ const LoginForm = () => {
       <div className="checkbox-login_help w-full flex justify-between text-[13px] text-smallTextGray">
         <div id="remember-me">
           <input type="checkbox" name="" id="remember_me" />
-          <label htmlFor="remember_me">{form.checkbox}</label>
+          <label htmlFor="remember_me">&nbsp;{form.checkbox}</label>
         </div>
         <a href="" className="hover:underline">
           {form.loginHelp}

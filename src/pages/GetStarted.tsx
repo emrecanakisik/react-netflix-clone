@@ -6,14 +6,31 @@ import FAQ from "../components/GetStarted/FAQ/FAQ";
 import Footer from "../components/GetStarted/footer/Footer";
 import GSLangContProv from "../contexts/GetStartedLangContext";
 
-const GetStarted = ({ isLang, setIsLang, setLang, lang }: any) => {
+const GetStarted = ({
+  isLang,
+  setIsLang,
+  GSLang,
+  setGSLang,
+  loginLang,
+  setLoginLang,
+}: any) => {
   return (
-    <GSLangContProv provValue={lang}>
-      <Navbar isLang={isLang} setIsLang={setIsLang} setLang={setLang} />
+    <GSLangContProv provValue={GSLang}>
+      <Navbar
+        isLang={isLang}
+        setIsLang={setIsLang}
+        setGSLang={setGSLang}
+        setLoginLang={setLoginLang}
+      />
       <Header />
       <Main />
       <FAQ />
-      <Footer isLang={isLang} setIsLang={setIsLang} setLang={setLang} />
+      <Footer
+        isLang={isLang}
+        setIsLang={setIsLang}
+        setGSLang={setGSLang}
+        setLoginLang={setLoginLang}
+      />
     </GSLangContProv>
   );
 };

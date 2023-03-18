@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { GSLangContext } from "../../../contexts/GetStartedLangContext";
 import FooterItem from "../../FooterItem";
 import PhoneNumForQues from "../../PhoneNumForQues";
 import SelectLang from "../SelectLang";
 
-const Footer = ({ isLang, setIsLang, setLang }: any) => {
+type lang = {
+  isLang: string;
+  setIsLang: string;
+  setGSLang: string;
+  setLoginLang: string;
+};
+
+const Footer: FC<lang> = ({ setGSLang, setLoginLang, isLang, setIsLang }) => {
   const footer = useContext(GSLangContext).footer;
   return (
     <footer className="px-[31.9697rem] py-10 flex flex-col text-NetflixMidGray bg-black">
@@ -17,7 +24,13 @@ const Footer = ({ isLang, setIsLang, setLang }: any) => {
           <FooterItem title={item} key={index} />
         ))}
       </ul>
-      <SelectLang isLang={isLang} setIsLang={setIsLang} setLang={setLang} />
+      <SelectLang
+        isLang={isLang}
+        setIsLang={setIsLang}
+        setGSLang={setGSLang}
+        setLoginLang={setLoginLang}
+        page="GetStarted"
+      />
       <p className="my-3 text-sm font-medium">Netflix Nederlands</p>
     </footer>
   );
