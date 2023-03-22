@@ -2,16 +2,9 @@ import React, { FC } from "react";
 import { getStartedPageLang } from "../../contexts/GetStartedLangContext";
 import { useNavigate } from "react-router-dom";
 import { loginPageLang } from "../../contexts/LoginLangContext";
+import { langprops } from "../../App";
 
-type lang = {
-  isLang: string;
-  setIsLang: string;
-  setGSLang: string;
-  page: "GetStarted" | "Login";
-  setLoginLang: any;
-};
-
-const SelectLang: FC<lang> = ({
+const SelectLang: FC<langprops> = ({
   isLang,
   setIsLang,
   setGSLang,
@@ -27,11 +20,13 @@ const SelectLang: FC<lang> = ({
       setGSLang(getStartedPageLang.english);
       setLoginLang(loginPageLang.english);
       page === "GetStarted" && navigate("/nl-en");
+      page === "Login" && navigate("/nl-en/login");
     } else {
       setIsLang(selectedLang);
       setGSLang(getStartedPageLang.nederlands);
       setLoginLang(loginPageLang.nederlands);
       page === "GetStarted" && navigate("/nl");
+      page === "Login" && navigate("/nl/login");
     }
   };
 

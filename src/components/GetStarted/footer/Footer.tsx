@@ -1,4 +1,5 @@
 import React, { FC, useContext } from "react";
+import { langprops } from "../../../App";
 import { GSLangContext } from "../../../contexts/GetStartedLangContext";
 import FooterItem from "../../FooterItem";
 import PhoneNumForQues from "../../PhoneNumForQues";
@@ -11,7 +12,12 @@ type lang = {
   setLoginLang: string;
 };
 
-const Footer: FC<lang> = ({ setGSLang, setLoginLang, isLang, setIsLang }) => {
+const Footer: FC<langprops> = ({
+  setGSLang,
+  setLoginLang,
+  isLang,
+  setIsLang,
+}) => {
   const footer = useContext(GSLangContext).footer;
   return (
     <footer className="px-[31.9697rem] py-10 flex flex-col text-NetflixMidGray bg-black">

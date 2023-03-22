@@ -1,12 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import "./App.css";
-import GetStarted from "./pages/GetStarted";
-import Login from "./pages/Login";
+import GetStarted from "./pages/GetStarted-Login/GetStarted";
+import Login from "./pages/GetStarted-Login/Login";
 import { Routes, Route, Link, NavLink, useNavigate } from "react-router-dom";
 import GSLangContProv, {
   getStartedPageLang,
 } from "./contexts/GetStartedLangContext";
 import { loginPageLang } from "./contexts/LoginLangContext";
+import GetStartedLoginLayout from "./pages/GetStarted-Login/Index";
+import GetStartedError from "./pages/GetStarted-Login/GetStartedError";
+
+export type langprops = {
+  isLang?: string;
+  setIsLang?: any;
+  GSLang?: object;
+  setGSLang?: any;
+  loginLang?: object;
+  setLoginLang?: any;
+  page?: "GetStarted" | "Login";
+};
 
 function App() {
   const [isLang, setIsLang] = useState("English");
@@ -14,17 +26,17 @@ function App() {
   const [LoginLang, setLoginLang] = useState(loginPageLang.english);
   const navigate = useNavigate();
 
-  /*  useEffect(() => {
-    navigate("/nl-en");
+  /* useEffect(() => {
+    isLang === "English" ? navigate("/nl-en") : navigate("/nl");
   }, []); */
 
   return (
     <div>
       <Routes>
         <Route
-          path={GSLang.link}
+          path="*"
           element={
-            <GetStarted
+            <GetStartedError
               isLang={isLang}
               setIsLang={setIsLang}
               GSLang={GSLang}
@@ -34,19 +46,35 @@ function App() {
             />
           }
         />
-        <Route
-          path="/login"
-          element={
-            <Login
-              isLang={isLang}
-              setIsLang={setIsLang}
-              GSLang={GSLang}
-              setGSLang={setGSLang}
-              loginLang={LoginLang}
-              setLoginLang={setLoginLang}
-            />
-          }
-        />
+        <Route path={`/${GSLang.link}`} element={<GetStartedLoginLayout />}>
+          <Route
+            index={true}
+            element={
+              <GetStarted
+                isLang={isLang}
+                setIsLang={setIsLang}
+                GSLang={GSLang}
+                setGSLang={setGSLang}
+                loginLang={LoginLang}
+                setLoginLang={setLoginLang}
+              />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <Login
+                isLang={isLang}
+                setIsLang={setIsLang}
+                GSLang={GSLang}
+                setGSLang={setGSLang}
+                loginLang={LoginLang}
+                setLoginLang={setLoginLang}
+              />
+            }
+          />
+          <Route path="*" element={<GetStartedError />} />
+        </Route>
       </Routes>
     </div>
   );

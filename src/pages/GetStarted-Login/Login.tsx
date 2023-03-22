@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
-import NetflixLogo from "../components/NetflixLogo";
-import bgImg from "../assets/begin-page/header-img.jpg";
-import LoginForm from "../components/Login/form/LoginForm";
+import React from "react";
+import NetflixLogo from "../../components/NetflixLogo";
+import bgImg from "../../assets/begin-page/header-img.jpg";
+import LoginForm from "../../components/Login/form/LoginForm";
 
-import LoginLangContProv from "../contexts/LoginLangContext";
-import FooterItem from "../components/FooterItem";
-import PhoneNumForQues from "../components/PhoneNumForQues";
-import SelectLang from "../components/GetStarted/SelectLang";
-import Footer from "../components/Login/footer/Footer";
+import LoginLangContProv from "../../contexts/LoginLangContext";
+import Footer from "../../components/Login/footer/Footer";
 
 const Login = ({
   isLang,
