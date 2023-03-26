@@ -26,7 +26,6 @@ const LoginInput: FC<loginInput> = ({
       e.target.classList.remove("border-errorRed", "border-b-2");
       setSpanState(false);
     }
-    console.log(e.target);
   };
 
   const inputCharacterControl = (e: any) => {

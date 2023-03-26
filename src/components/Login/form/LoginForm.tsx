@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { LoginLangContext } from "../../../contexts/LoginLangContext";
-import { signIn, signUp } from "../../../firebase";
+import { signIn } from "../../../firebase";
 import LoginInput from "./LoginInput";
 import SignInBtn from "./SignInBtn";
 
@@ -14,7 +14,6 @@ const LoginForm = () => {
     Content: "",
     ContentLink: "",
   });
-  console.log(form.H1);
   return (
     <form
       onSubmit={(e) => signIn(e, email, password, setError)}
@@ -22,7 +21,7 @@ const LoginForm = () => {
     >
       <h1 className="text-[2rem] mb-7 font-medium">{form.H1}</h1>
       {error.state && (
-        <div className="mb-4 py-[0.625rem] px-5 w-full rounded text-sm bg-NetflixWarning text-white">
+        <div className="mb-4 py-[0.625rem] px-5 rounded text-sm bg-NetflixWarning text-white">
           {error.strongContent && (
             <span className="font-medium">{error.strongContent} </span>
           )}
@@ -73,6 +72,13 @@ const LoginForm = () => {
             {form.reCAPTCHA.a}
           </a>
         </p>
+      </div>
+      <div className="py-[0.625rem] px-5 bg-inputGray font-medium text-sm rounded">
+        You can login with this account:
+        <br />
+        Email: <span className="font-normal">user@react-netflix-clone.com</span>
+        <br />
+        Password: <span className="font-normal">1234567890</span>
       </div>
     </form>
   );
