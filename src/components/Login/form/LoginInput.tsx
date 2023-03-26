@@ -5,6 +5,8 @@ type loginInput = {
   id: string;
   labelContent: string;
   spanContent?: string;
+  value: string;
+  setValue: any;
 };
 
 const LoginInput: FC<loginInput> = ({
@@ -12,6 +14,8 @@ const LoginInput: FC<loginInput> = ({
   id,
   labelContent,
   spanContent,
+  value,
+  setValue,
 }) => {
   const [spanState, setSpanState] = useState(false);
   const inputControl = (e: any) => {
@@ -26,6 +30,7 @@ const LoginInput: FC<loginInput> = ({
   };
 
   const inputCharacterControl = (e: any) => {
+    setValue(e.target.value);
     if (e.target.value.length > 5) {
       e.target.classList.remove("border-errorRed", "border-b-2");
       setSpanState(false);
@@ -39,6 +44,7 @@ const LoginInput: FC<loginInput> = ({
           type={inputType}
           name=""
           id={id}
+          value={value}
           onBlur={(e) => inputControl(e)}
           onChange={(e) => inputCharacterControl(e)}
           className="w-full px-5 pt-6 peer focus:outline-0 focus:bg-inputHoverGray bg-inputGray"

@@ -11,6 +11,7 @@ module.exports = {
         accordionBgGray: "#2D2D2D",
         inputGray: "#333333",
         NetflixMidGray: "#737373",
+        NetflixWarning: "#E87C03",
       },
       height: { 737: "737px" },
       fontFamily: {

@@ -1,22 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { LoginLangContext } from "../../../contexts/LoginLangContext";
+import { signIn, signUp } from "../../../firebase";
 import LoginInput from "./LoginInput";
 import SignInBtn from "./SignInBtn";
 
 const LoginForm = () => {
   const form = useContext(LoginLangContext).form;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState({
+    state: false,
+    strongContent: "",
+    Content: "",
+    ContentLink: "",
+  });
   console.log(form.H1);
   return (
-    <div className="bg-black rounded text-white w-[28rem] h-[42.5rem] px-[4.25rem] py-[3.75rem] mx-auto mb-[4.25rem]">
+    <form
+      onSubmit={(e) => signIn(e, email, password, setError)}
+      className="bg-black rounded text-white w-[28rem] h-[42.5rem] px-[4.25rem] py-[3.75rem] mx-auto mb-[4.25rem]"
+    >
       <h1 className="text-[2rem] mb-7 font-medium">{form.H1}</h1>
+      {error.state && (
+        <div className="mb-4 py-[0.625rem] px-5 w-full rounded text-sm bg-NetflixWarning text-white">
+          {error.strongContent && (
+            <span className="font-medium">{error.strongContent} </span>
+          )}
+          {error.Content}{" "}
+          {error.ContentLink && (
+            <a href="" className="underline">
+              {error.ContentLink}
+            </a>
+          )}
+        </div>
+      )}
       <LoginInput
         inputType="email"
+        value={email}
+        setValue={setEmail}
         id="loginEmail"
         labelContent={form.input.label.email}
         spanContent={form.input.error.email}
       />
       <LoginInput
         inputType="password"
+        value={password}
+        setValue={setPassword}
         id="loginpass"
         labelContent={form.input.label.pass}
         spanContent={form.input.error.pass}
@@ -45,7 +74,7 @@ const LoginForm = () => {
           </a>
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 
