@@ -51,7 +51,9 @@ const LoginInput: FC<loginInput> = ({
 
         <label
           htmlFor={id}
-          className="absolute text-NetflixMidGray peer-focus:font-medium left-5 peer-focus:text-[11px] peer-focus:top-2 peer-invalid:text-[11px] peer-invalid:top-2 duration-100"
+          className={`absolute text-NetflixMidGray peer-focus:font-medium left-5 peer-focus:text-[11px] peer-focus:top-2 duration-100 ${
+            value !== "" && "top-2 text-[11px] font-medium"
+          }`}
         >
           {labelContent}
         </label>
