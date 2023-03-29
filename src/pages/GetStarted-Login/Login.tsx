@@ -1,20 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import NetflixLogo from "../../components/NetflixLogo";
 import bgImg from "../../assets/begin-page/header-img.jpg";
 import LoginForm from "../../components/Login/form/LoginForm";
-
-import LoginLangContProv from "../../contexts/LoginLangContext";
 import Footer from "../../components/Login/footer/Footer";
+import { Contexts } from "../../contexts/LangContext";
 
-const Login = ({
-  isLang,
-  setIsLang,
-  setGSLang,
-  setLoginLang,
-  loginLang,
-}: any) => {
+const Login = () => {
   return (
-    <LoginLangContProv provValue={loginLang}>
+    <div>
       <img
         src={bgImg}
         alt=""
@@ -24,13 +17,8 @@ const Login = ({
         <NetflixLogo />
       </nav>
       <LoginForm />
-      <Footer
-        isLang={isLang}
-        setIsLang={setIsLang}
-        setGSLang={setGSLang}
-        setLoginLang={setLoginLang}
-      />
-    </LoginLangContProv>
+      <Footer />
+    </div>
   );
 };
 

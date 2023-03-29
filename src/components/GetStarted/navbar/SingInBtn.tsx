@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { GSLangContext } from "../../../contexts/GetStartedLangContext";
+import { Contexts } from "../../../contexts/LangContext";
 
 const SingInBtn = () => {
-  const langContext = useContext(GSLangContext);
-  console.log();
+  const { isLang } = useContext(Contexts);
+  const context = isLang.context.GSLang;
 
   return (
     <Link
-      to={`${langContext.link}/login`}
+      to={`${isLang.context.GSLang.link}/login`}
       className="py-2 px-4 rounded text-white bg-NetflixRed"
     >
-      {langContext.signInBtn}
+      {context.signInBtn}
     </Link>
   );
 };

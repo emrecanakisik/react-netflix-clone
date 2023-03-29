@@ -1,8 +1,9 @@
 import React, { FC, useContext } from "react";
-import { GSLangContext } from "../../contexts/GetStartedLangContext";
+import { Contexts } from "../../contexts/LangContext";
 type emailBox = { emailBoxId?: number };
 const EmailForm: FC<emailBox> = ({ emailBoxId }) => {
-  const form = useContext(GSLangContext).header.form;
+  const { isLang } = useContext(Contexts);
+  const form = isLang.context.GSLang.header.form;
   const mailBoxControl = (e: any) => {
     const mailBox = document.querySelector(
       `#gsEmailBox${emailBoxId}`

@@ -1,11 +1,14 @@
-import React, { useContext, useState } from "react";
-import { LoginLangContext } from "../../../contexts/LoginLangContext";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Contexts } from "../../../contexts/LangContext";
 import { signIn } from "../../../firebase";
 import LoginInput from "./LoginInput";
 import SignInBtn from "./SignInBtn";
 
 const LoginForm = () => {
-  const form = useContext(LoginLangContext).form;
+  const { isLang, userData, setUserData } = useContext(Contexts);
+  const form = isLang.context.LoginLang.form;
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({
@@ -14,9 +17,14 @@ const LoginForm = () => {
     Content: "",
     ContentLink: "",
   });
+
+  useEffect(() => {
+    userData.status && navigate("/browse");
+    console.log(userData);
+  }, [userData]);
   return (
     <form
-      onSubmit={(e) => signIn(e, email, password, setError)}
+      onSubmit={(e) => signIn(e, email, password, setError, setUserData)}
       className="bg-black rounded text-white w-[28rem] h-[42.5rem] px-[4.25rem] py-[3.75rem] mx-auto mb-[4.25rem]"
     >
       <h1 className="text-[2rem] mb-7 font-medium">{form.H1}</h1>

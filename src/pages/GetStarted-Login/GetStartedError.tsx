@@ -1,77 +1,33 @@
-import React, { FC } from "react";
-import { langprops } from "../../App";
-import { getStartedPageLang } from "../../contexts/GetStartedLangContext";
-import { loginPageLang } from "../../contexts/LoginLangContext";
+import React, { FC, useContext } from "react";
+import { LangContext, Contexts } from "../../contexts/LangContext";
 import GetStarted from "./GetStarted";
+import Login from "./Login";
 
-const GetStartedError: FC<langprops> = ({
-  isLang,
-  setIsLang,
-  GSLang,
-  setGSLang,
-  loginLang,
-  setLoginLang,
-}) => {
+const GetStartedError = () => {
+  const { isLang, setIsLang, userData, setUserData } = useContext(Contexts);
   const url = window.location;
 
   if (url.pathname === "/nl") {
-    setIsLang("Nederlands");
-    setGSLang(getStartedPageLang.nederlands);
-    setLoginLang(loginPageLang.nederlands);
-    return (
-      <GetStarted
-        isLang={isLang}
-        setIsLang={setIsLang}
-        GSLang={GSLang}
-        setGSLang={setGSLang}
-        loginLang={loginLang}
-        setLoginLang={setLoginLang}
-      />
-    );
+    setIsLang({ lang: "Nederlands", context: LangContext.Nederlands });
+    return <GetStarted />;
   } else if (url.pathname === "/nl-en") {
-    setIsLang("English");
-    setGSLang(getStartedPageLang.english);
-    setLoginLang(loginPageLang.english);
-    return (
-      <GetStarted
-        isLang={isLang}
-        setIsLang={setIsLang}
-        GSLang={GSLang}
-        setGSLang={setGSLang}
-        loginLang={loginLang}
-        setLoginLang={setLoginLang}
-      />
-    );
+    return <GetStarted />;
+    setIsLang({ lang: "English", context: LangContext.English });
   } else if (url.pathname === "/nl/login") {
-    setIsLang("Nederlands");
-    setGSLang(getStartedPageLang.nederlands);
-    setLoginLang(loginPageLang.nederlands);
-    return (
-      <GetStarted
-        isLang={isLang}
-        setIsLang={setIsLang}
-        GSLang={GSLang}
-        setGSLang={setGSLang}
-        loginLang={loginLang}
-        setLoginLang={setLoginLang}
-      />
-    );
+    setIsLang({ lang: "Nederlands", context: LangContext.Nederlands });
+    return <Login />;
   } else if (url.pathname === "/nl-en/login") {
-    setIsLang("English");
-    setGSLang(getStartedPageLang.english);
-    setLoginLang(loginPageLang.english);
-    return (
-      <GetStarted
-        isLang={isLang}
-        setIsLang={setIsLang}
-        GSLang={GSLang}
-        setGSLang={setGSLang}
-        loginLang={loginLang}
-        setLoginLang={setLoginLang}
-      />
-    );
+    setIsLang({ lang: "English", context: LangContext.English });
+    return <Login />;
   } else {
-    return <div>GetStartedError</div>;
+    return (
+      <div>
+        GetStartedError, {userData.data.email}{" "}
+        <button onClick={() => setUserData({ status: false, data: {} })}>
+          SignOut
+        </button>
+      </div>
+    );
   }
 };
 

@@ -1,18 +1,12 @@
 import React, { FC, useContext } from "react";
-import { LoginLangContext } from "../../../contexts/LoginLangContext";
+import { Contexts } from "../../../contexts/LangContext";
 import FooterItem from "../../FooterItem";
 import SelectLang from "../../GetStarted/SelectLang";
 import PhoneNumForQues from "../../PhoneNumForQues";
 
-type lang = {
-  isLang: string;
-  setIsLang: string;
-  setGSLang: string;
-  setLoginLang: string;
-};
-
-const Footer: FC<lang> = ({ isLang, setIsLang, setGSLang, setLoginLang }) => {
-  const footer = useContext(LoginLangContext).footer;
+const Footer = () => {
+  const { isLang } = useContext(Contexts);
+  const footer = isLang.context.LoginLang.footer;
   return (
     <footer className="w-full px-[31.9697rem] py-[1.875rem] text-NetflixMidGray bg-black">
       <PhoneNumForQues
@@ -20,17 +14,11 @@ const Footer: FC<lang> = ({ isLang, setIsLang, setGSLang, setLoginLang }) => {
         phoneNum={footer.phoneNumForQues.number}
       />
       <ul className="footer-items flex flex-wrap mb-5">
-        {footer.items.map((item) => (
-          <FooterItem title={item} />
+        {footer.items.map((item: string, index: number) => (
+          <FooterItem title={item} key={index} />
         ))}
       </ul>
-      <SelectLang
-        isLang={isLang}
-        setIsLang={setIsLang}
-        setGSLang={setGSLang}
-        setLoginLang={setLoginLang}
-        page="Login"
-      />
+      <SelectLang page="Login" />
     </footer>
   );
 };

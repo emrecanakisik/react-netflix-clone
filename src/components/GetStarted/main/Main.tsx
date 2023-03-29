@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { GSLangContext } from "../../../contexts/GetStartedLangContext";
 import MainItem from "./MainItem";
 import sec1Img1 from "../../../assets/begin-page/main/section-1/tv.png";
 import sec1video from "../../../assets/begin-page/main/section-1/tv-video.m4v";
@@ -9,9 +8,11 @@ import sec2Img3 from "../../../assets/begin-page/main/section-2/download.gif";
 import sec3Img1 from "../../../assets/begin-page/main/section-3/video-device-img.png";
 import sec3video from "../../../assets/begin-page/main/section-3/device-video.m4v";
 import sec4Img1 from "../../../assets/begin-page/main/section-4.png";
+import { Contexts } from "../../../contexts/LangContext";
 
 const Main = () => {
-  const main = useContext(GSLangContext).main;
+  const { isLang } = useContext(Contexts);
+  const main = isLang.context.GSLang.main;
   return (
     <main className="left-20 bg-black h-auto">
       <MainItem

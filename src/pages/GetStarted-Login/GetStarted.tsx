@@ -1,42 +1,21 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/GetStarted/header/Header";
 import Main from "../../components/GetStarted/main/Main";
 import Navbar from "../../components/GetStarted/navbar/Navbar";
 import FAQ from "../../components/GetStarted/FAQ/FAQ";
 import Footer from "../../components/GetStarted/footer/Footer";
-import GSLangContProv from "../../contexts/GetStartedLangContext";
-import { langprops } from "../../App";
+import { Contexts, LangContext } from "../../contexts/LangContext";
 
-const GetStarted: FC<langprops> = ({
-  isLang,
-  setIsLang,
-  GSLang,
-  setGSLang,
-  setLoginLang,
-}) => {
-  const navigate = useNavigate();
-  /* useEffect(() => {
-    isLang === "English" ? navigate("/nl-en") : navigate("/nl");
-  }, []); */
+const GetStarted = () => {
   return (
-    <GSLangContProv provValue={GSLang}>
-      <Navbar
-        isLang={isLang}
-        setIsLang={setIsLang}
-        setGSLang={setGSLang}
-        setLoginLang={setLoginLang}
-      />
+    <div>
+      <Navbar />
       <Header />
       <Main />
       <FAQ />
-      <Footer
-        isLang={isLang}
-        setIsLang={setIsLang}
-        setGSLang={setGSLang}
-        setLoginLang={setLoginLang}
-      />
-    </GSLangContProv>
+      <Footer />
+    </div>
   );
 };
 

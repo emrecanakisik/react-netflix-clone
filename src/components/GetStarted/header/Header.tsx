@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { GSLangContext } from "../../../contexts/GetStartedLangContext";
+import { Contexts } from "../../../contexts/LangContext";
 import EmailForm from "../EmailForm";
 
 const Header = () => {
-  const header = useContext(GSLangContext).header;
+  const { isLang } = useContext(Contexts);
+  const header = isLang.context.GSLang.header;
 
   return (
     <header className="relative w-full h-737 overflow-hidden">

@@ -26,17 +26,20 @@ const auth = getAuth();
   const { user } = await createUserWithEmailAndPassword(auth, email, password);
   console.log(user);
 }; */
+
 export const signIn = async (
   e: any,
   email: string,
   password: string,
-  errorState: any
+  errorState: any,
+  userData: any
 ) => {
   try {
     e.preventDefault();
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     const dbRef = ref(database, `users/${user.uid}`);
     onValue(dbRef, (snapshot) => {
+      userData({ status: true, data: snapshot.val() });
       console.log(snapshot.val());
     });
     errorState({

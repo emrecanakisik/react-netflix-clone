@@ -1,32 +1,27 @@
-import React, { FC } from "react";
-import { getStartedPageLang } from "../../contexts/GetStartedLangContext";
+import React, { FC, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginPageLang } from "../../contexts/LoginLangContext";
-import { langprops } from "../../App";
+import { Contexts, LangContext } from "../../contexts/LangContext";
 
-const SelectLang: FC<langprops> = ({
-  isLang,
-  setIsLang,
-  setGSLang,
-  setLoginLang,
-  page,
-}: any) => {
+type selectedLangProp = { page: string };
+
+const SelectLang: FC<selectedLangProp> = ({ page }) => {
+  const { isLang, setIsLang } = useContext(Contexts);
   const className = "bg-gray-500 text-white";
   const navigate = useNavigate();
+  let selectValue = isLang.lang;
+  useEffect(() => {
+    console.log(isLang);
+  }, [isLang]);
 
   const switchLang = (selectedLang: string) => {
     if (selectedLang === "English") {
-      setIsLang(selectedLang);
-      setGSLang(getStartedPageLang.english);
-      setLoginLang(loginPageLang.english);
       page === "GetStarted" && navigate("/nl-en");
       page === "Login" && navigate("/nl-en/login");
+      setIsLang({ lang: selectedLang, context: LangContext.English });
     } else {
-      setIsLang(selectedLang);
-      setGSLang(getStartedPageLang.nederlands);
-      setLoginLang(loginPageLang.nederlands);
       page === "GetStarted" && navigate("/nl");
       page === "Login" && navigate("/nl/login");
+      setIsLang({ lang: selectedLang, context: LangContext.Nederlands });
     }
   };
 
@@ -35,15 +30,14 @@ const SelectLang: FC<langprops> = ({
       <select
         name=""
         id="langSel"
-        defaultValue="English"
-        value={isLang}
+        value={isLang.lang}
         onChange={(e) => switchLang(e.target.value)}
         className="lang-select flex-1 outline-none appearance-none w-100 py-2 px-6 te text-white text-center text-sm font-normal bg-transparent focus:outline-white focus:outline-offset-0 rounded"
       >
         <option value="English" className={className}>
           English
         </option>
-        <option value="Spanish" className={className}>
+        <option value="Nederlands" className={className}>
           Nederlands
         </option>
       </select>
