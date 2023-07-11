@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { Contexts, LangContext } from "../../contexts/LangContext";
 
 type selectedLangProp = { page: string };
@@ -7,7 +7,7 @@ type selectedLangProp = { page: string };
 const SelectLang: FC<selectedLangProp> = ({ page }) => {
   const { isLang, setIsLang } = useContext(Contexts);
   const className = "bg-gray-500 text-white";
-  const navigate = useNavigate();
+  const navigate = useRouter();
   let selectValue = isLang.lang;
   useEffect(() => {
     console.log(isLang);
@@ -15,12 +15,12 @@ const SelectLang: FC<selectedLangProp> = ({ page }) => {
 
   const switchLang = (selectedLang: string) => {
     if (selectedLang === "English") {
-      page === "GetStarted" && navigate("/nl-en");
-      page === "Login" && navigate("/nl-en/login");
+      page === "GetStarted" && navigate.replace("/nl-en");
+      page === "Login" && navigate.replace("/nl-en/login");
       setIsLang({ lang: selectedLang, context: LangContext.English });
     } else {
-      page === "GetStarted" && navigate("/nl");
-      page === "Login" && navigate("/nl/login");
+      page === "GetStarted" && navigate.replace("/nl");
+      page === "Login" && navigate.replace("/nl/login");
       setIsLang({ lang: selectedLang, context: LangContext.Nederlands });
     }
   };

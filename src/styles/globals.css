@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Netflix Sans";
+  font-weight: 400;
+  src: url(/NetflixSans/Netflix\ Sans\ Light.otf) format("opentype");
+}
+@font-face {
+  font-family: "Netflix Sans";
+  font-weight: 500;
+  src: url(/NetflixSans/Netflix\ Sans\ Medium.otf) format("opentype");
+}
+@font-face {
+  font-family: "Netflix Sans";
+  font-weight: 700;
+  src: url(/NetflixSans/Netflix\ Sans\ Bold.otf) format("opentype");
+}
+* {
+  font-family: "Netflix Sans";
+  font-weight: 400;
+}
+
+.langSelect::before {
+  content: "\f0ac";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0.6vh;
+  z-index: 2;
+  pointer-events: none;
+  color: #fff;
+}
+
+.langSelect::after {
+  content: "\f0d7";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 0.6vh;
+  z-index: 2;
+  pointer-events: none;
+  color: #fff;
+}

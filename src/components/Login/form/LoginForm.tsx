@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { Contexts } from "../../../contexts/LangContext";
 import { signIn } from "../../../firebase";
 import LoginInput from "./LoginInput";
@@ -8,7 +8,7 @@ import SignInBtn from "./SignInBtn";
 const LoginForm = () => {
   const { isLang, userData, setUserData } = useContext(Contexts);
   const form = isLang.context.LoginLang.form;
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({
@@ -19,7 +19,7 @@ const LoginForm = () => {
   });
 
   useEffect(() => {
-    userData.status && navigate("/browse");
+    userData.status && navigate.replace("/browse");
     console.log(userData);
   }, [userData]);
   return (

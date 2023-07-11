@@ -1,11 +1,12 @@
 import React, { FC, useContext } from "react";
+import Image from "next/image";
 
 type img_video = {
   sectionH1: string;
   sectionH2: string;
-  img1src: string;
-  img2src?: string;
-  img3src?: string;
+  img1src: string | any;
+  img2src?: string | any;
+  img3src?: string | any;
   videosrc?: string;
   imgSide: "left" | "right";
   videoClass?: string;
@@ -33,7 +34,8 @@ const MainItem: FC<img_video> = ({
       } px-[22.75rem] justify-between items-center`}
     >
       <div className="relative min-w-[36.3rem] h-[27.2rem]">
-        <img src={img1src} alt="" className="h-full relative z-20" />
+        <Image src={img1src} alt="" className="h-full relative z-20" />
+        {/* <img src={img1src} alt="" className="h-full relative z-20" /> */}
         {videosrc ? (
           <video
             src={videosrc}
@@ -47,12 +49,14 @@ const MainItem: FC<img_video> = ({
         )}
         {img2src ? (
           <div className="phn-download absolute bottom-7 bg-black left-1/4 flex justify-between items-center w-72 px-3 py-2 rounded-xl border-2 border-zinc-700 z-20">
-            <img src={img2src} alt="" className={"h-20"} />
+            <Image src={img2src} alt="" className={"h-20 w-auto"} />
+            {/* <img src={img2src} alt="" className={"h-20"} /> */}
             <div className="flex-1 flex flex-col ml-4">
               <h1 className="font-medium text-white">{miniBoxH1}</h1>
               <h2 className="text-sm text-blue-600">{miniBoxH2}</h2>
             </div>
-            <img src={img3src} alt="" className={"w-12"} />
+            <Image src={img3src} alt="" className={"w-12"} />
+            {/* <img src={img3src} alt="" className={"w-12"} /> */}
           </div>
         ) : (
           ""
