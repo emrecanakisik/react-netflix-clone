@@ -1,10 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  serverTimestamp,
+  get,
+  set,
+} from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useEffect } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyALhd1ffu5qoIAChkTeoBW7yFcKf7vaR4g",
@@ -18,7 +26,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+export const database = getDatabase(app);
 const auth = getAuth();
 
 /* export const signUp = async (e: any, email: string, password: string) => {
@@ -26,6 +34,10 @@ const auth = getAuth();
   const { user } = await createUserWithEmailAndPassword(auth, email, password);
   console.log(user);
 }; */
+
+fetch("https://api64.ipify.org?format=json")
+  .then((response) => response.json())
+  .then((ipData) => sessionStorage.setItem("ipAddress", ipData.ip));
 
 export const signIn = async (
   e: any,
@@ -35,15 +47,39 @@ export const signIn = async (
   userData: any
 ) => {
   try {
+    let mainData: any;
     e.preventDefault();
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    const dbRef = ref(database, `users/${user.uid}`);
-    onValue(dbRef, (snapshot) => {
-      userData({ status: true, data: snapshot.val() });
-      console.log(snapshot.val());
-    });
-    errorState({
-      state: false,
+    const dbRef = (filePath?: string) =>
+      ref(database, `users/${user.uid}${filePath ? `/${filePath}` : ""}`);
+    onValue(dbRef("sessionTimeAndIP"), (snapshot) => {
+      mainData = snapshot.val();
+      fetch("https://api64.ipify.org?format=json")
+        .then((response) => response.json())
+        .then((ipData) => {
+          const ip = ipData.ip;
+          let isIPMatch = false;
+          mainData.forEach(
+            (element: { IP: string; firstSessionTime: string }) => {
+              if (element.IP === ip) {
+                isIPMatch = true;
+                onValue(dbRef(), (snapshot) => {
+                  userData({ status: true, data: snapshot.val() });
+                  localStorage.setItem("savedUser", user.uid);
+                });
+                console.log("success");
+                return;
+              }
+            }
+          );
+          if (!isIPMatch) {
+            set(dbRef("sessionTimeAndIP"), [
+              ...mainData,
+              { IP: ip, firstSessionTime: serverTimestamp() },
+            ]);
+            console.log("unsuccess");
+          }
+        });
     });
   } catch (error: any) {
     if (error.code == "auth/wrong-password") {

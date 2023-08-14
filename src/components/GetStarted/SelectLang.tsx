@@ -8,17 +8,15 @@ const SelectLang: FC<selectedLangProp> = ({ page }) => {
   const { isLang, setIsLang } = useContext(Contexts);
   const className = "bg-gray-500 text-white";
   const navigate = useRouter();
-  let selectValue = isLang.lang;
-  useEffect(() => {
-    console.log(isLang);
-  }, [isLang]);
 
   const switchLang = (selectedLang: string) => {
     if (selectedLang === "English") {
+      localStorage.setItem("selectedLang", "English");
       page === "GetStarted" && navigate.replace("/nl-en");
       page === "Login" && navigate.replace("/nl-en/login");
       setIsLang({ lang: selectedLang, context: LangContext.English });
     } else {
+      localStorage.setItem("selectedLang", "Nederlands");
       page === "GetStarted" && navigate.replace("/nl");
       page === "Login" && navigate.replace("/nl/login");
       setIsLang({ lang: selectedLang, context: LangContext.Nederlands });

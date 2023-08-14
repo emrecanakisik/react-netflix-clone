@@ -20,8 +20,8 @@ const LoginForm = () => {
 
   useEffect(() => {
     userData.status && navigate.replace("/browse");
-    console.log(userData);
-  }, [userData]);
+    /* console.log(userData); */
+  }, []);
   return (
     <form
       onSubmit={(e) => signIn(e, email, password, setError, setUserData)}

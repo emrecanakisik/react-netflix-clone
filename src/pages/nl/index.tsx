@@ -6,9 +6,8 @@ const Nl = () => {
   const { isLang, setIsLang } = useContext(Contexts);
 
   useEffect(() => {
-    isLang.lang === "English" &&
-      setIsLang({ lang: "Nederlands", context: LangContext.Nederlands });
-    console.log(isLang.lang);
+    setIsLang({ lang: "Nederlands", context: LangContext.Nederlands });
+    localStorage.setItem("selectedLang", "Nederlands");
   }, []);
 
   return <GetStarted />;

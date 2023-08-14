@@ -3,6 +3,12 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      height: {
+        90: "90%",
+      },
+      width: {
+        90: "90%",
+      },
       colors: {
         NetflixRed: "#E50914",
         errorRed: "#E87C03",
@@ -11,6 +17,7 @@ module.exports = {
         accordionBgGray: "#2D2D2D",
         inputGray: "#333333",
         NetflixMidGray: "#737373",
+        NetflixBlack: "#141414",
         NetflixWarning: "#E87C03",
       },
       height: { 737: "737px" },
