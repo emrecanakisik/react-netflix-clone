@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Contexts } from "../contexts/LangContext";
 import { useRouter } from "next/router";
-import ChooseUser from "@/ChooseUser";
+import ChooseUser from "@/pages/main-pages/browse-pages/ChooseUser";
 
 const Browse = () => {
   const { userData } = useContext(Contexts);

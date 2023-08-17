@@ -19,6 +19,8 @@ module.exports = {
         NetflixMidGray: "#737373",
         NetflixBlack: "#141414",
         NetflixWarning: "#E87C03",
+        E5: "#e5e5e5",
+        B3: "#B3B3B3",
       },
       height: { 737: "737px" },
       fontFamily: {
